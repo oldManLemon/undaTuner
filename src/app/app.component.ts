@@ -16,7 +16,7 @@ export class AppComponent {
     //create a synth and connect it to the master output (your speakers)
     this.synth = new Tone.Synth().toMaster();
 
-    this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B']; //0 place and increase range!
+    this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']; //0 place and increase range!
   }
 
 
@@ -28,7 +28,7 @@ export class AppComponent {
     this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
   }
 
-  async selectScale(scaleType: string) {
+  selectScale(scaleType: string) {
 
     switch (scaleType) {
       case 'CM':
@@ -76,12 +76,42 @@ export class AppComponent {
     }
 
 
-    for (var note of this.scale) {
 
-      this.synth.triggerAttackRelease(note+4, '8n');
+  }
 
+  async playScale() {
+
+    //Catch if scale is greater than 8
+    if (this.scale.length > 8) {
+      return console.error('Basic Scales can not be more than 8 notes in length');
+
+    }
+    //Notes need to transpose up automatically upon reaching C unless C is the first note
+    for (let note = 0, range = 4, cPassed = 0; note < 8; note++) {
+
+      if (this.scale[note] === 'C' || this.scale[note] === 'C#' || this.scale[note] === 'Cb' ) {
+        //If C is passed play the note one higher
+        cPassed++;
+        if (note != 0) {
+          //Only when reaching the next C in the scale should the range be increased
+          range++;
+        }
+      }
+
+      this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
+      console.log(this.scale[note] + range)
       await this.delay(500);
-    };
+
+    }
+
+    // for (var note of this.scale) {
+
+    //   this.synth.triggerAttackRelease(note+4, '8n');
+
+
+    //   await this.delay(500);
+    // };
+
   }
 
   delay(ms: number) {
