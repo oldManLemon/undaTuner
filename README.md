@@ -13,4 +13,5 @@ A online guitar tuner built with Tone.js
  - https://materializecss.com/mobile.html
  - Either a new tab or draw out menu for the microphone page 
  - recorder/composer?
+ - Seperate out components
 
