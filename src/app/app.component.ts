@@ -10,50 +10,81 @@ export class AppComponent {
   title = 'undaTuner';
   synth: any;
   notes: Array<string>;
+  scale: string[];
 
-  constructor()
-  {
+  constructor() {
     //create a synth and connect it to the master output (your speakers)
     this.synth = new Tone.Synth().toMaster();
-    //play a middle 'C' for the duration of an 8th note
-   // this.synth.triggerAttackRelease("C4", "8n");
-   
-    
 
-    
+    this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B']; //0 place and increase range!
   }
 
 
-  onClick(note:string) {
+  onClick(note: number, range: number) {
 
-    var log = this.synth.triggerAttackRelease(note, '8n');
-    console.log(log);
+
+    console.log(`Playing: ${this.scale[note]}${range}`);
+
+    this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
   }
 
-  async scale(scaleType: string) {
+  async selectScale(scaleType: string) {
 
-    var scaleArray : string[][] = [];
-    
-    switch (scaleType){
-      case 'CM': 
-      scaleArray =[['C4','8n'],['D4','8n'],['E4','8n'],['F4','8n'],['G4','8n'],['A4','8n'],['B4','8n'],['C5','8n'] ]
-      break;
-      //minor
+    switch (scaleType) {
+      case 'CM':
+        this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
+        break;
+      //Minor 
       case 'Cm':
-      scaleArray =[['C4','8n'],['D4','8n'],['D#4','8n'],['F4','8n'],['G4','8n'],['G#4','8n'],['a#4','8n'],['C5','8n'] ]
-      break;
+        this.scale = ['C', 'D', 'Eb', 'F', 'G', 'Ab', 'Bb', 'C'];
+        break;
+      case 'DM':
+        this.scale = ['D', 'E', "F#", 'G', 'A', 'B', 'C#', 'D'];
+        break;
+      case 'Dm':
+        this.scale = ['D', 'E', 'F', "G", 'A', 'Bb', 'C', 'D'];
+        break;
+      case 'EM':
+        this.scale = ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#', 'E'];
+        break;
+      case 'Em':
+        this.scale = ['E', 'F#', 'G', 'A', 'B', 'C', 'D', 'E'];
+        break;
+      case 'FM':
+        this.scale = ['F', 'G', 'A', 'Bb', 'C', 'D', 'E', 'F'];
+        break;
+      case 'Fm':
+        this.scale = ['F', 'G', 'Ab', 'Bb', 'C', 'Db', 'Eb', 'F'];
+        break;
+      case 'GM':
+        this.scale = ['G', 'A', 'B', 'C', 'D', 'E', 'F#', 'G'];
+        break;
+      case 'Gm':
+        this.scale = ['G', 'A', 'Bb', 'C', 'D', 'Eb', 'F', 'G'];
+        break;
+      case 'AM':
+        this.scale = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#', 'A'];
+        break;
+      case 'Am':
+        this.scale = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A'];
+      case 'BM':
+        this.scale = ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#', 'B'];
+        break;
+      case 'Bm':
+        this.scale = ['B', 'C#', 'D', 'E', 'F#', 'G', 'A', 'B'];
+
     }
-   
 
-    for(var note of scaleArray){
 
-      this.synth.triggerAttackRelease(note[0], note[1]);
+    for (var note of this.scale) {
+
+      this.synth.triggerAttackRelease(note+4, '8n');
 
       await this.delay(500);
     };
   }
- 
-  delay(ms: number){
+
+  delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 

@@ -1,13 +1,15 @@
-<button (click)="onClick('C4');">C</button>
-<button (click)="onClick('D4');">D</button>
-<button (click)="onClick('E4');">E</button>
-<button (click)="onClick('F4');">F</button>
-<button (click)="onClick('G4');">G</button>
-<button (click)="onClick('A4');">A</button>
-<button (click)="onClick('B4');">B</button>
-<button (click)="onClick('C5');">C</button>
+
+
+<button (click)="onClick(0,4);">{{scale[0]}}</button>
+<button (click)="onClick(1,4);">{{scale[1]}}</button>
+<button (click)="onClick(2,4);">{{scale[2]}}</button>
+<button (click)="onClick(3,4);">{{scale[3]}}</button>
+<button (click)="onClick(4,4);">{{scale[4]}}</button>
+<button (click)="onClick(5,4);">{{scale[5]}}</button>
+<button (click)="onClick(6,4);">{{scale[6]}}</button>
+<button (click)="onClick(0,5);">{{scale[7]}}</button>
 
 <div>
-    <button (click)="scale('CM');">Run Scale</button>
-    <button (click)="scale('Cm');">Run minro</button>
+    <button (click)="selectScale('CM');">Run C Major Scale</button>
+    <button (click)="selectScale('Cm');">Run C Minor Scale</button>
 </div>
