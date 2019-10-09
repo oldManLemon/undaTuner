@@ -94,7 +94,7 @@ export class AppComponent {
     for (let note = 0, range = this.range, cPassed = 0; note < 8; note++) {
       
       if (this.scale[note] === 'C' || this.scale[note] === 'C#' || this.scale[note] === 'Cb') {
-        //If C is passed play the note one higher
+        //If C is passed check it off
         cPassed++;
         if (note != 0) {
           //Only when reaching the next C in the scale should the range be increased
