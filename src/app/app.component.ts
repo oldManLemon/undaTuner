@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as Tone from 'tone';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +13,9 @@ export class AppComponent {
   notes: Array<string>;
   scale: string[];
   range:number;
+  //basics: basicFunctions
+
+
 
   constructor() {
     //create a synth and connect it to the master output (your speakers)
@@ -19,10 +23,16 @@ export class AppComponent {
 
     this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']; //0 place and increase range!
     this.range = 4; //Default Value
+    
   }
 
+  onClick(note: number, last?:number) {
+    
+    let range = this.range;
+    if(last == 1){
+      range++;
+    }
 
-  onClick(note: number, range: number) {
 
 
     console.log(`Playing: ${this.scale[note]}${range}`);
@@ -33,6 +43,7 @@ export class AppComponent {
   selectScale(scaleType: string) {
 
     switch (scaleType) {
+      //Major
       case 'CM':
         this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
         break;
@@ -95,7 +106,7 @@ export class AppComponent {
       
       if (this.scale[note] === 'C' || this.scale[note] === 'C#' || this.scale[note] === 'Cb') {
         //If C is passed check it off
-        cPassed++;
+        cPassed++; //Reduntent for now but can be used in future
         if (note != 0) {
           //Only when reaching the next C in the scale should the range be increased
           range++;
@@ -113,6 +124,10 @@ export class AppComponent {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+ 
+
+
+ 
 
 
 
