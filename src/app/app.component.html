@@ -1,15 +1,11 @@
+<h1>{{title}}</h1>
 
-<!-- <app-buttons *ngFor note in scale [scale]='scale'></app-buttons> -->
-<app-buttons *ngFor = 'let note of scale' [note]='note'></app-buttons>
 
-<!-- <button (click)="onClick(0);">{{scale[0]}}</button>
-<button (click)="onClick(1);">{{scale[1]}}</button>
-<button (click)="onClick(2);">{{scale[2]}}</button>
-<button (click)="onClick(3);">{{scale[3]}}</button>
-<button (click)="onClick(4);">{{scale[4]}}</button>
-<button (click)="onClick(5);">{{scale[5]}}</button>
-<button (click)="onClick(6);">{{scale[6]}}</button>
-<button (click)="onClick(0,1);">{{scale[7]}}</button> -->
+<app-buttons (tap)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>
+
+
+
+ 
 
 
 

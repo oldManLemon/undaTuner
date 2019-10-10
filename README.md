@@ -14,4 +14,6 @@ A online guitar tuner built with Tone.js
  - Either a new tab or draw out menu for the microphone page 
  - recorder/composer?
  - Seperate out components
+ - bind to keyboard events and play each note mapped to the number row
+ - make sure it works on mobile and multiple taps
 

@@ -1,5 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { AppComponent } from '../../app.component'
+import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { playNote } from '../../functions/basics'
 
 
@@ -9,15 +8,17 @@ import { playNote } from '../../functions/basics'
   styleUrls: ['./buttons.component.scss']
 })
 export class ButtonsComponent implements OnInit {
-  @Input() scale: Array<string>;
+
   @Input() note: string;
-  
- 
+  @Input() i:number;
+  @Input() middleC: number;
 
-  constructor() { 
-  }
+  @Output() tap = new EventEmitter<[string, number,number]>();
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onTap(){ 
+    this.tap.emit([this.note, this.i, this.middleC]);
   }
 
 }
