@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ButtonsComponent } from './componenets/buttons/buttons.component';
+import { ButtonsComponent } from './components/buttons/buttons.component';
+import { RangeComponent } from './components/range/range.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    RangeComponent
   ],
   imports: [
     BrowserModule,
