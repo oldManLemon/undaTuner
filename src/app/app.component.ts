@@ -77,6 +77,7 @@ export class AppComponent {
 
     }
   }
+
   rangeSelector(range:number){
     //I can only hear C10 then anything above that I can't hear I don't know if that is my comp speakers
     //or if that is my hearing
