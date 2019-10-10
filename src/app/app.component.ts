@@ -126,21 +126,15 @@ export class AppComponent {
     }
   }
 
-  scaleMidError(code: number) {
-    if (code == 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
-  playNote(pair: [string, number, number]) {
+  playNote(pair: [string, number, number?]) {
 
     var note = pair[0];
     var index = pair[1];
     var localMidC = pair[2];
     let range = this.range;
-    //Catch the scale error
+
+    //Catch the scale error: Error reports in console and disables buttons
     if (this.scaleMidError(localMidC)) {
       return console.error(`An error has occured please chose another scale!`)
     }
@@ -162,10 +156,13 @@ export class AppComponent {
   async playScale() {
 
     //Catch if scale is greater than 8
-    if (this.scale.length > 8) {
+    if(this.scaleNotEight(this.scale)){
       return console.error('Basic Scales can not be more than 8 notes in length');
-
     }
+    // if (this.scale.length > 8) {
+    //   
+
+    // }
     //Notes need to transpose up automatically upon reaching C unless C is the first note
     for (let note = 0, range = this.range, cPassed = 0; note < 8; note++) {
 
@@ -190,7 +187,25 @@ export class AppComponent {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+//Error Catching and Handling
 
+//Check if there is an error with the midC
+scaleMidError(code: number) {
+  if (code == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+//If scale is larger than 8
+scaleNotEight(scale: Array<string>){
+ let legnth = scale.length;
+ if(length > 8){
+   return true; //It is too big for a basic scale!
+ }else{
+   return false; //It is a scale
+ }
+}
 
 
 
