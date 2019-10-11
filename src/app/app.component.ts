@@ -41,70 +41,12 @@ export class AppComponent {
     this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
   }
 
-  selectScale(pair: [string, string[]]) {
+  selectScale(scale: string[]) {
+    this.scale = scale;
+    this.middleC = this.findTheMiddleC(this.scale)
 
-    switch (pair[0]) {
-      //Major
-      case 'CM':
-        this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      //Minor 
-      case 'Cm':
-        this.scale = ['C', 'D', 'Eb', 'F', 'G', 'Ab', 'Bb', 'C'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'DM':
-        this.scale = ['D', 'E', "F#", 'G', 'A', 'B', 'C#', 'D'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'Dm':
-        this.scale = ['D', 'E', 'F', "G", 'A', 'Bb', 'C', 'D'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'EM':
-        this.scale = ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#', 'E'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'Em':
-        this.scale = ['E', 'F#', 'G', 'A', 'B', 'C', 'D', 'E'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'FM':
-        this.scale = ['F', 'G', 'A', 'Bb', 'C', 'D', 'E', 'F'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'Fm':
-        this.scale = ['F', 'G', 'Ab', 'Bb', 'C', 'Db', 'Eb', 'F'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'GM':
-        this.scale = ['G', 'A', 'B', 'C', 'D', 'E', 'F#', 'G'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'Gm':
-        this.scale = ['G', 'A', 'Bb', 'C', 'D', 'Eb', 'F', 'G'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'AM':
-        this.scale = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#', 'A'];
-        this.middleC = this.findTheMiddleC(this.scale);
-        break;
-      case 'Am':
-        this.scale = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A'];
-        this.middleC = this.findTheMiddleC(this.scale);
-      case 'BM':
-        this.scale = ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#', 'B'];
-        this.middleC = this.findTheMiddleC(this.scale);
-
-        break;
-      case 'Bm':
-        this.scale = ['B', 'C#', 'D', 'E', 'F#', 'G', 'A', 'B'];
-        this.findTheMiddleC(this.scale);
-        break;
-
-    }
   }
+
   rangeSelector(range: number) {
     //I can only hear C10 then anything above that I can't hear I don't know if that is my comp speakers
     //or if that is my hearing
@@ -156,7 +98,7 @@ export class AppComponent {
   async playScale() {
 
     //Catch if scale is greater than 8
-    if(this.scaleNotEight(this.scale)){
+    if (this.scaleNotEight(this.scale)) {
       return console.error('Basic Scales can not be more than 8 notes in length');
     }
     // if (this.scale.length > 8) {
@@ -185,27 +127,27 @@ export class AppComponent {
 
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  } 
-
-//Error Catching and Handling
-
-//Check if there is an error with the midC
-scaleMidError(code: number) {
-  if (code == 0) {
-    return true;
-  } else {
-    return false;
   }
-}
-//If scale is larger than 8
-scaleNotEight(scale: Array<string>){
- let legnth = scale.length;
- if(length > 8){
-   return true; //It is too big for a basic scale!
- }else{
-   return false; //It is a scale
- }
-}
+
+  //Error Catching and Handling
+
+  //Check if there is an error with the midC
+  scaleMidError(code: number) {
+    if (code == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  //If scale is larger than 8
+  scaleNotEight(scale: Array<string>) {
+    let legnth = scale.length;
+    if (length > 8) {
+      return true; //It is too big for a basic scale!
+    } else {
+      return false; //It is a scale
+    }
+  }
 
 
 

@@ -39,12 +39,13 @@ export class ScalesComponent implements OnInit {
 
   emitSelectedScale(){
 
-    //console.log(this.selectedScale)
+    console.log(this.selectedScale)
+    //Add scales obj to models so to create interface to avoid red underlines
    let selectedScaleArray = this.scales.find(s => s.id === this.selectedScale);
-    //console.log(this.scales.find(s => s.id === this.selectedScale));
+    selectedScaleArray = selectedScaleArray.scale;
     
 
-    this.selectedScaleEmit.emit([this.selectedScale, selectedScaleArray])
+    this.selectedScaleEmit.emit(selectedScaleArray)
   }
 
 }
