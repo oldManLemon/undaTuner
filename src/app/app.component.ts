@@ -41,9 +41,9 @@ export class AppComponent {
     this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
   }
 
-  selectScale(scaleType: string) {
+  selectScale(pair: [string, string[]]) {
 
-    switch (scaleType) {
+    switch (pair[0]) {
       //Major
       case 'CM':
         this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
