@@ -13,12 +13,13 @@ export class ButtonsComponent implements OnInit {
   @Input() i:number;
   @Input() middleC: number;
 
-  @Output() tap = new EventEmitter<[string, number,number]>();
+  @Output() touched = new EventEmitter<[string, number,number]>();
 
   ngOnInit() { }
 
   onTap(){ 
-    this.tap.emit([this.note, this.i, this.middleC]);
+    
+    this.touched.emit([this.note, this.i, this.middleC]);
   }
 
 }

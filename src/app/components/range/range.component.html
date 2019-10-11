@@ -1,1 +1,13 @@
-<p>range works!</p>
+<!-- <select>
+    <ng-container name="rangeSelector" *ngFor='let i of range; let i = index' [(ngModel)]="valueSent" (change) ="onSelect()">
+        <option *ngIf= 'i == 4'  [ngValue]='i'  selected>{{i}}</option> 
+        <option   [ngValue]='i'   >{{i}}</option>
+    </ng-container>
+</select> -->
+
+    <h1>Drop Down</h1>
+<select [(ngModel)]="selectedLevel" (change)="selected()">
+    
+    <option *ngFor="let item of data" [ngValue]="item.id">{{item.name}}</option>
+</select>
+<!-- {{selectedLevel | json}} -->
