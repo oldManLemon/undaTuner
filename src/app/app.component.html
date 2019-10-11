@@ -1,4 +1,6 @@
 <h1>{{title}}</h1>
+<h4>{{description}}</h4>
+
 
 
 <app-buttons (touched)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>

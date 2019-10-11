@@ -8,7 +8,8 @@ import * as Tone from 'tone';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'undaTuner';
+  title = 'unda Tuner';
+  description = 'Tuner based on wave lengths. Currently only plays basic scales at you';
   synth: any;
   notes: Array<string>;
   scale: string[];
