@@ -185,7 +185,7 @@ export class AppComponent {
 
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  } 
 
 //Error Catching and Handling
 

@@ -3,8 +3,8 @@
 
 <app-buttons (touched)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>
 <div>
-        <!-- <app-scales></app-scales> -->
-    <select>
+        <app-scales></app-scales>
+    <!-- <select>
         <option (click)="selectScale('CM');">C Major</option>
         <option (click)="selectScale('Cm');">C Minor</option>
         <option (click)="selectScale('DM');">D Major</option>
@@ -20,7 +20,7 @@
         <option (click)="selectScale('BM');">B Major</option>
         <option (click)="selectScale('Bm');">B Minor</option>
 
-    </select>
+    </select> -->
     <app-range (selectedValue) = rangeSelector($event)></app-range>
     <button (click) ='playScale()'>Play &#9658; </button>
 </div>
