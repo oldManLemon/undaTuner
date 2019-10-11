@@ -1,0 +1,5 @@
+
+<select [(ngModel)]="selectedLevel" (change)="selected()">
+    <option *ngFor="let item of data" [ngValue]="item.id">{{item.name}}</option>
+</select>
+

@@ -1,17 +1,9 @@
+<h1>{{title}}</h1>
 
 
-<button (click)="onClick(0,4);">{{scale[0]}}</button>
-<button (click)="onClick(1,4);">{{scale[1]}}</button>
-<button (click)="onClick(2,4);">{{scale[2]}}</button>
-<button (click)="onClick(3,4);">{{scale[3]}}</button>
-<button (click)="onClick(4,4);">{{scale[4]}}</button>
-<button (click)="onClick(5,4);">{{scale[5]}}</button>
-<button (click)="onClick(6,4);">{{scale[6]}}</button>
-<button (click)="onClick(0,5);">{{scale[7]}}</button>
-
-
-
+<app-buttons (touched)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>
 <div>
+        <!-- <app-scales></app-scales> -->
     <select>
         <option (click)="selectScale('CM');">C Major</option>
         <option (click)="selectScale('Cm');">C Minor</option>
@@ -29,18 +21,6 @@
         <option (click)="selectScale('Bm');">B Minor</option>
 
     </select>
-    <select>
-        <option (click) = 'rangeSelector(0)'>0</option>
-        <option (click) = 'rangeSelector(1)'>1</option>
-        <option (click) = 'rangeSelector(2)'>2</option>
-        <option (click) = 'rangeSelector(3)'>3</option>
-        <option (click) = 'rangeSelector(4)' selected>4</option>
-        <option (click) = 'rangeSelector(5)'>5</option>
-        <option (click) = 'rangeSelector(6)'>6</option>
-        <option (click) = 'rangeSelector(7)'>7</option>
-        <option (click) = 'rangeSelector(8)'>8</option>
-        <option (click) = 'rangeSelector(9)'>9</option>
-        <option (click) = 'rangeSelector(10)'>10</option>
-    </select>
+    <app-range (selectedValue) = rangeSelector($event)></app-range>
     <button (click) ='playScale()'>Play &#9658; </button>
 </div>
