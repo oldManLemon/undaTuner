@@ -119,9 +119,7 @@ export class AppComponent {
       this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
       console.log(this.scale[note] + range)
       await this.delay(500);
-
     }
-
   }
 
   delay(ms: number) {
