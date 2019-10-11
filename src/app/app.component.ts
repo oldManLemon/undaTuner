@@ -44,7 +44,6 @@ export class AppComponent {
   selectScale(scale: string[]) {
     this.scale = scale;
     this.middleC = this.findTheMiddleC(this.scale)
-
   }
 
   rangeSelector(range: number) {
