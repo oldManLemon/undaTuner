@@ -3,6 +3,7 @@
 
 <app-buttons (touched)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>
 <div>
+        <!-- <app-scales></app-scales> -->
     <select>
         <option (click)="selectScale('CM');">C Major</option>
         <option (click)="selectScale('Cm');">C Minor</option>

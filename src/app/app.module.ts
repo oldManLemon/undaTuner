@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { RangeComponent } from './components/range/range.component';
+import { ScalesComponent } from './components/scales/scales.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonsComponent,
-    RangeComponent
+    RangeComponent,
+    ScalesComponent
   ],
   imports: [
     BrowserModule,

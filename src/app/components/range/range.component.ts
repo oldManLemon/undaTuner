@@ -12,8 +12,6 @@ export class RangeComponent implements OnInit {
   constructor(){ 
     this.selectedLevel = 4; //Force default selection here
   }
-  
-  
   data:Array<Object> = [
       {id: 0, name: "Low 0"},
       {id: 1, name: "Low 1"},

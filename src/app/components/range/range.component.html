@@ -1,16 +1,5 @@
-<!-- <select>
-    <ng-container name="rangeSelector" *ngFor='let i of range; let i = index' [(ngModel)]="valueSent" (change) ="onSelect()">
-        <option *ngIf= 'i == 4'  [ngValue]='i'  selected>{{i}}</option> 
-        <option   [ngValue]='i'   >{{i}}</option>
-    </ng-container>
-</select> -->
 
-   
 <select [(ngModel)]="selectedLevel" (change)="selected()">
-   
-            
-    <!-- <option *ngIf = 'item.id == 4'  [ngValue]="item.id"  selected>{{item.name}}</option> -->
     <option *ngFor="let item of data" [ngValue]="item.id">{{item.name}}</option>
-    
 </select>
 
