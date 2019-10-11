@@ -5,9 +5,12 @@
     </ng-container>
 </select> -->
 
-    <h1>Drop Down</h1>
+   
 <select [(ngModel)]="selectedLevel" (change)="selected()">
-    
+   
+            
+    <!-- <option *ngIf = 'item.id == 4'  [ngValue]="item.id"  selected>{{item.name}}</option> -->
     <option *ngFor="let item of data" [ngValue]="item.id">{{item.name}}</option>
+    
 </select>
-<!-- {{selectedLevel | json}} -->
+

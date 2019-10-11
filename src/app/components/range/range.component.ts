@@ -7,32 +7,13 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./range.component.scss']
 })
 export class RangeComponent implements OnInit {
-//   range: Array<number>;
-//   index: string;
-
   @Output() selectedValue = new EventEmitter();
-//   constructor() {
-//     this.range = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //Do I even need this
-//   }
-
-//   ngOnInit() {
-//   }
-
-// valueSent;
-// rangeSelector;
-//   onSelect() {
-//     console.warn(this.valueSent)
-//     console.error(this.rangeSelector)
-//     console.log(`You have selected Value ${this.valueSent}`)
-//     this.selected.emit(this.valueSent)
-//   }
-
-
-
-
-  constructor(){ }
-
-  selectedLevel;
+  selectedLevel: number;
+  constructor(){ 
+    this.selectedLevel = 4; //Force default selection here
+  }
+  
+  
   data:Array<Object> = [
       {id: 0, name: "Low 0"},
       {id: 1, name: "Low 1"},
@@ -45,11 +26,11 @@ export class RangeComponent implements OnInit {
       {id: 8, name: "High 8"},
       {id: 9, name: "Super 9"},
       {id: 10, name: "Super 10"},
-  ];
+  ]; //Move this to a models folder
   ngOnInit(){}
 
   selected(){
-    console.log(this.selectedLevel);
+    //console.log(this.selectedLevel);
     this.selectedValue.emit(this.selectedLevel)
   }
 

@@ -16,4 +16,5 @@ A online guitar tuner built with Tone.js
  - Seperate out components
  - bind to keyboard events and play each note mapped to the number row
  - make sure it works on mobile and multiple taps
+ - move all modules to a more centralised folder
 
