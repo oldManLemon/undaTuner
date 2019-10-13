@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {scalesBasic} from '../../models/scales.model'
 
 @Component({
   selector: 'app-scales',
@@ -7,10 +8,11 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class ScalesComponent implements OnInit {
   selectedScale: string;
+  sacles: scalesBasic;
   @Output() selectedScaleEmit = new EventEmitter();
 
- 
-  scales: Array<object> = [
+
+  scales: Array<scalesBasic> = [
 
     { id: 'CM', name: "C Major", scale: ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'] },
     { id: 'Cm', name: "C Minor", scale: ['C', 'D', 'Eb', 'F', 'G', 'Ab', 'Bb', 'C'] },
@@ -42,10 +44,10 @@ export class ScalesComponent implements OnInit {
     console.log(this.selectedScale)
     //Add scales obj to models so to create interface to avoid red underlines
    let selectedScaleArray = this.scales.find(s => s.id === this.selectedScale);
-    selectedScaleArray = selectedScaleArray.scale;
+    
     
 
-    this.selectedScaleEmit.emit(selectedScaleArray)
+    this.selectedScaleEmit.emit(selectedScaleArray.scale)
   }
 
 }
