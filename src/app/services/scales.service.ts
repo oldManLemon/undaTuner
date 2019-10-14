@@ -26,7 +26,7 @@ export class ScalesService {
       { id: 'Bm', name: "B Minor", scale: ['B', 'C#', 'D', 'E', 'F#', 'G', 'A', 'B'] }
   
     ]
-  }
+  }    
 
   getBasicBluesScales(){
     return [
