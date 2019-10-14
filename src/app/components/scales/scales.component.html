@@ -1,0 +1,5 @@
+
+<select [(ngModel)]="selectedScale" (change)="emitSelectedScale()">
+        <option *ngFor="let scale of scaleType" [ngValue]="scale.id">{{scale.name}}</option>
+    </select>
+    
