@@ -1,6 +1,4 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
-import { playNote } from '../../functions/basics'
-
 
 @Component({
   selector: 'app-buttons',

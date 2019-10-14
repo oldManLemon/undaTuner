@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as Tone from 'tone';
+import { delay } from './functions/basics';
 
 
 @Component({
@@ -95,6 +96,7 @@ export class AppComponent {
     }
   }
 
+
   async playScale() {
 
     //Catch if scale is greater than 8
@@ -119,13 +121,10 @@ export class AppComponent {
 
       this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
       console.log(this.scale[note] + range)
-      await this.delay(500);
+      await delay(500);
     }
   }
 
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
   //Error Catching and Handling
 
@@ -139,7 +138,7 @@ export class AppComponent {
   }
   //If scale is larger than 8
   scaleNotEight(scale: Array<string>) {
-    let legnth = scale.length;
+    let length = scale.length;
     if (length > 8) {
       return true; //It is too big for a basic scale!
     } else {
