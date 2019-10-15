@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as Tone from 'tone';
-import { delay } from './functions/basics';
+import { delay, midScaleFinder } from './functions/basics';
 
 
 @Component({
@@ -57,8 +57,13 @@ export class AppComponent {
   findTheMiddleC(scale: Array<String>): number {
     //Error Handling
     if (scale.length > 8) {
-      return 0; //Zero Index simply won't work
+      console.info('Scale is longer than 8 notes')
+      return 800; //800 is too big and should break for now
+    }else if(scale.length < 8){
+      console.info('Scale is shorter than 8 notes')
+      return 801; //801 is ok should play, need a new method of finding c. 
     }
+
     for (let i = 0; i < 8; i++) {
       if (scale[i] == 'C' || scale[i] == "C#" || scale[i] == 'Cb') {
         if (i != 0) {
@@ -98,32 +103,33 @@ export class AppComponent {
 
 
   async playScale() {
-
+    let middleOfScale: number;
     //Catch if scale is greater than 8
-    if (this.scaleNotEight(this.scale)) {
+    if (this.scaleNotEight(this.scale) == 800) { // see error codes
       return console.error('Basic Scales can not be more than 8 notes in length');
+    }else if(this.scaleNotEight(this.scale) == 801){
+      //console.log(this.midScaleFinder(this.scale))
+       middleOfScale =  midScaleFinder(this.scale)
     }
-    // if (this.scale.length > 8) {
-    //   
+    
+    let lengthOfScale = this.scale.length;
+    //console.log(`Middle of scale number ${middleOfScale}`)
 
-    // }
-    //Notes need to transpose up automatically upon reaching C unless C is the first note
-    for (let note = 0, range = this.range, cPassed = 0; note < 8; note++) {
-
-      if (this.scale[note] === 'C' || this.scale[note] === 'C#' || this.scale[note] === 'Cb') {
-        //If C is passed check it off
-        cPassed++; //Reduntent for now but can be used in future
-        if (note != 0) {
-          //Only when reaching the next C in the scale should the range be increased
-          range++;
-        }
+   
+    //Notes need to move up the range automatically
+    for (let note = 0, range = this.range; note < lengthOfScale; note++) {
+      if(note == middleOfScale){
+       range++;
       }
+      
 
       this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
       console.log(this.scale[note] + range)
       await delay(500);
     }
   }
+
+ 
 
 
   //Error Catching and Handling
@@ -139,12 +145,17 @@ export class AppComponent {
   //If scale is larger than 8
   scaleNotEight(scale: Array<string>) {
     let length = scale.length;
+  
     if (length > 8) {
-      return true; //It is too big for a basic scale!
-    } else {
-      return false; //It is a scale
+      console.info('Scale is longer than 8 notes')
+      return 800; //800 is too big and should break for now
+    }else if(length < 8){
+      console.info('Scale is shorter than 8 notes')
+      return 801; //801 is ok should play, need a new method of finding c. 
     }
   }
+
+  
 
 
 

@@ -16,7 +16,7 @@ export class ScalesComponent implements OnInit {
 
   constructor(private scales:ScalesService) { 
     this.scales;
-    this.scaleType = this.scales.getBasicScales();
+    this.scaleType = this.scales.getBasicBluesScales();
     this.selectedScale = 'CM'; //Setting the default scale to C Maj
   }
   

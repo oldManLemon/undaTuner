@@ -46,6 +46,6 @@ export class ScalesService {
       { id: 'BM', name: "B Major Pentatonic Blues", scale: ['B', 'C#', 'D', 'D#', 'F#', 'G#', 'B' ] },
       { id: 'Bm', name: "B Minor Pentatonic Blues", scale: ['B', 'D', 'E', 'F', 'F#', 'A', 'B' ] }
   
-    ]
+    ] //Difficulty here is there is sometimes not a middle C so will need to guess where that is. 
   }
 }
