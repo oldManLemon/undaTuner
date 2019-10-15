@@ -5,6 +5,6 @@
      -->
 <div>
      <ng-container *ngFor = 'let type of typeAvailable'>  
-            <input name='scaleType' type="radio" [value]='type.id'> {{type.name}}
+            <input name='scaleType' type="radio" [value]='type.id' (change) = 'onSelect(type.id)'> {{type.name}}
         </ng-container>
         </div>
