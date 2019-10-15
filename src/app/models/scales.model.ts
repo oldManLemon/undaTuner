@@ -10,3 +10,8 @@ export class ScalesBasic{
     name:string;
     scale:string[]
 }
+
+export class ScaleTypes{
+    id:string;
+    name: string;
+}

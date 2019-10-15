@@ -9,7 +9,7 @@ import { ScalesService } from '../../services/scales.service'
 })
 export class ScalesComponent implements OnInit {
   selectedScale: string;
-  sacles: ScalesBasic;
+  // sacles: ScalesBasic;
   scaleType: Array<ScalesBasic>;
   @Output() selectedScaleEmit = new EventEmitter();
 

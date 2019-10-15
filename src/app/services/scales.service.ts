@@ -6,6 +6,12 @@ import { Injectable } from '@angular/core';
 export class ScalesService {
 
   constructor() { }
+  getScaleTypes(){
+    return[
+      {id:'basics', name:'Basic Scales'},
+      {id:'pent', name: 'Pentatonic Blues'}
+    ]
+  }
 
   getBasicScales(){
     return [

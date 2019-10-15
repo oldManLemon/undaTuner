@@ -2,7 +2,7 @@
 <h4>{{description}}</h4>
 
 
-
+<app-scaletype></app-scaletype>
 <app-buttons (touched)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>
 <div>
         <app-scales (selectedScaleEmit) = 'selectScale($event)' ></app-scales>

@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { RangeComponent } from './components/range/range.component';
 import { ScalesComponent } from './components/scales/scales.component';
+import { ScaletypeComponent } from './components/scaletype/scaletype.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonsComponent,
     RangeComponent,
-    ScalesComponent
+    ScalesComponent,
+    ScaletypeComponent
   ],
   imports: [
     BrowserModule,
