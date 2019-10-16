@@ -5,7 +5,7 @@
 
 
     <app-scaletype (typeSelected)=typeOfScale($event)></app-scaletype>
-    <div class="columns"> <app-buttons (touched)="playNote($event)" *ngFor='let note of scale; let i = index' [middleC]='middleC'
+    <div class="columns is-gapless"> <app-buttons (touched)="playNote($event)" *ngFor='let note of scale; let i = index' [middleC]='middleC'
         [note]='note' [i]='i'></app-buttons></div>
    
 
