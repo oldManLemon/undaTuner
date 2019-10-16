@@ -18,20 +18,20 @@ export class AppComponent {
   scale: string[];
   range: number;
   middleC: number;
-  scaleTypeChoice:string;
+  scaleTypeChoice: string;
   //basics: basicFunctions
 
 
 
   constructor() {
     //create a synth and connect it to the master output (your speakers)
-    this.synth = new Tone.Synth().toMaster();
+    this.synth = new Tone.PolySynth().toMaster();
 
     this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']; //0 place and increase range!
     this.range = 4; //Default Value
     this.middleC = 7; //Default Value as Default Scale is C Major See above
     //this.scaleTypeChoice = 'basic';
-    
+
   }
 
   selectScale(scale: string[]) {
@@ -39,7 +39,7 @@ export class AppComponent {
     this.middleC = midScaleFinder(this.scale)
   }
 
-  typeOfScale(scaleTypeName:string){
+  typeOfScale(scaleTypeName: string) {
     ///console.log(scaleTypeName);
     this.scaleTypeChoice = scaleTypeName;
     //console.log(this.scaleTypeChoice);
@@ -48,6 +48,7 @@ export class AppComponent {
   rangeSelector(range: number) {
     this.range = range;
   }
+
 
   playNote(pair: [string, number, number?]) {
 
@@ -69,12 +70,32 @@ export class AppComponent {
       console.log(`Playing: ${note}${range}`);
       this.synth.triggerAttackRelease(note + range, '8n');
 
+
     } else {
       console.log(`Playing: ${note}${range}`);
       this.synth.triggerAttackRelease(note + range, '8n');
+
     }
   }
+  playChord() {
+    let chordArray = []
+    let scaleOfDoom = this.scale;
+    let lengthOfScale = this.scale.length;
+    console.log(this.scale)
+    for (let note = 0; note < lengthOfScale; note++) {
+      if (note == 0 || note == 2 ||note == 4) {
+        console.log(scaleOfDoom[note])
+        chordArray.push(scaleOfDoom[note]);
+      }
+    }
+    for(let i = 0; i< chordArray.length; i++){
+      this.playSound(chordArray[i]);
+    }
 
+  }
+  playSound(sound) {
+    this.synth.triggerAttackRelease(sound + this.range, '8n');
+  }
 
   async playScale() {
     let middleOfScale: number;
@@ -94,5 +115,7 @@ export class AppComponent {
       await delay(500);
     }
   }
+
+
 
 }

@@ -8,6 +8,7 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { RangeComponent } from './components/range/range.component';
 import { ScalesComponent } from './components/scales/scales.component';
 import { ScaletypeComponent } from './components/scaletype/scaletype.component';
+import { ChordComponent } from './components/chord/chord.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ScaletypeComponent } from './components/scaletype/scaletype.component';
     ButtonsComponent,
     RangeComponent,
     ScalesComponent,
-    ScaletypeComponent
+    ScaletypeComponent,
+    ChordComponent
   ],
   imports: [
     BrowserModule,
