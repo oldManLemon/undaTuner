@@ -1,13 +1,22 @@
-<h1>{{title}}</h1>
-<h4>{{description}}</h4>
+<div class="container">
+
+    <h1>{{title}}</h1>
+    <h4>{{description}}</h4>
 
 
-<app-scaletype (typeSelected) = typeOfScale($event)></app-scaletype>
-<app-buttons (touched)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>
-<div>
-        <app-scales [scaleTypeChoice]=scaleTypeChoice (selectedScaleEmit) = 'selectScale($event)' ></app-scales>
-    <app-range (selectedValue) = rangeSelector($event)></app-range>
+    <app-scaletype (typeSelected)=typeOfScale($event)></app-scaletype>
+    <div class="columns"> <app-buttons (touched)="playNote($event)" *ngFor='let note of scale; let i = index' [middleC]='middleC'
+        [note]='note' [i]='i'></app-buttons></div>
+   
 
-    <button (click) ='playScale()'>Play &#9658; </button>
-    
+    <div>
+        <div class="level-left">
+            <app-scales [scaleTypeChoice]=scaleTypeChoice (selectedScaleEmit)='selectScale($event)'></app-scales>
+            <app-range (selectedValue)=rangeSelector($event)></app-range>
+        </div>
+
+
+        <button class="button is-success" (click)='playScale()'>Play &#9658; </button>
+
+    </div>
 </div>
