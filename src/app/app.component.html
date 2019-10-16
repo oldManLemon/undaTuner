@@ -2,10 +2,10 @@
 <h4>{{description}}</h4>
 
 
-<app-scaletype></app-scaletype>
+<app-scaletype (typeSelected) = typeOfScale($event)></app-scaletype>
 <app-buttons (touched)="playNote($event)" *ngFor = 'let note of scale; let i = index' [middleC]='middleC' [note] = 'note' [i] = 'i'></app-buttons>
 <div>
-        <app-scales (selectedScaleEmit) = 'selectScale($event)' ></app-scales>
+        <app-scales [scaleTypeChoice]=scaleTypeChoice (selectedScaleEmit) = 'selectScale($event)' ></app-scales>
     <app-range (selectedValue) = rangeSelector($event)></app-range>
 
     <button (click) ='playScale()'>Play &#9658; </button>

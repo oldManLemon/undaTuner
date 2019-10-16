@@ -1,6 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {ScalesBasic} from '../../models/scales.model'
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { ScalesBasic } from '../../models/scales.model'
 import { ScalesService } from '../../services/scales.service'
+import { Observable, BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-scales',
@@ -10,31 +12,39 @@ import { ScalesService } from '../../services/scales.service'
 export class ScalesComponent implements OnInit {
   selectedScale: string;
   // sacles: ScalesBasic;
-  scaleType: Array<ScalesBasic>;
   @Output() selectedScaleEmit = new EventEmitter();
+  @Input() scaleTypeChoice: string;
 
+  scaleStream: Observable<ScalesBasic[]>;
+  currentScale: ScalesBasic[];
+  subject: any;
 
-  constructor(private scales:ScalesService) { 
-    this.scales;
-    this.scaleType = this.scales.getBasicScales();
+  constructor(private scales: ScalesService) {
+    // this.scaleType = this.scales.getBasicBluesScales();
+    //this.scaleType = this.changeScaleType(this.scaleTypeChoice)
+    //this.scaleType = this.test(this.scaleTypeChoice);
+    //console.log(this.scaleTypeChoice);
+   
+    
     this.selectedScale = 'CM'; //Setting the default scale to C Maj
-  }
-  
-  ngOnInit() { 
-    
-    
+
+    this.scales.getCurrentScaleStream()
+      .subscribe(newScale => {
+        this.currentScale = newScale;
+      });
+
   }
 
-  emitSelectedScale(){
+  ngOnInit() { }
 
-    
+  emitSelectedScale() {
     //Add scales obj to models so to create interface to avoid red underlines
-    let selectedScaleArray = this.scaleType.find(s => s.id === this.selectedScale);
-    //console.log(selectedScaleArray);
-    
-    
+    let selectedScaleArray = this.currentScale.find(s => s.id === this.selectedScale);
+    //console.log(this.scales.scaleTypeState);
 
-    this.selectedScaleEmit.emit(selectedScaleArray.scale)
+   // console.log(this.scaleTypeChoice);
+
+   this.selectedScaleEmit.emit(selectedScaleArray.scale)
   }
 
 }

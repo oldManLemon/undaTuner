@@ -4,6 +4,7 @@ import { delay, midScaleFinder } from './functions/basics';
 import { scaleMidError, scaleNotEight } from './functions/errors'
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +18,7 @@ export class AppComponent {
   scale: string[];
   range: number;
   middleC: number;
+  scaleTypeChoice:string;
   //basics: basicFunctions
 
 
@@ -28,11 +30,19 @@ export class AppComponent {
     this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']; //0 place and increase range!
     this.range = 4; //Default Value
     this.middleC = 7; //Default Value as Default Scale is C Major See above
+    //this.scaleTypeChoice = 'basic';
+    
   }
 
   selectScale(scale: string[]) {
     this.scale = scale;
     this.middleC = midScaleFinder(this.scale)
+  }
+
+  typeOfScale(scaleTypeName:string){
+    ///console.log(scaleTypeName);
+    this.scaleTypeChoice = scaleTypeName;
+    //console.log(this.scaleTypeChoice);
   }
 
   rangeSelector(range: number) {
