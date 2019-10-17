@@ -25,7 +25,7 @@ export class AppComponent {
 
   constructor() {
     //create a synth and connect it to the master output (your speakers)
-    this.synth = new Tone.PolySynth().toMaster();
+    //this.synth = new Tone.PolySynth().toMaster();
 
     this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']; //0 place and increase range!
     this.range = 4; //Default Value
@@ -68,12 +68,12 @@ export class AppComponent {
     if (index >= localMidC) {
       range++;
       console.log(`Playing: ${note}${range}`);
-      this.synth.triggerAttackRelease(note + range, '8n');
+      playSound(note, range, '8n');
 
 
     } else {
       console.log(`Playing: ${note}${range}`);
-      this.synth.triggerAttackRelease(note + range, '8n');
+      playSound(note,range, '8n');
 
     }
   }
@@ -105,7 +105,7 @@ export class AppComponent {
       if (note == middleOfScale) {
         range++;
       }
-      this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
+      playSound(this.scale[note],range);
       console.log(this.scale[note] + range);
       await delay(500);
     }
