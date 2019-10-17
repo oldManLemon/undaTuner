@@ -1,3 +1,16 @@
+import * as Tone from 'tone';
+let synth:any;
+
+synth = new Tone.PolySynth().toMaster();
+
+export function playSound(sound:string, range:number, length?:string) {
+  if(length){
+    synth.triggerAttackRelease(sound + range, length);
+  }else{
+    synth.triggerAttackRelease(sound + range, '8n'); //Default length of 8n
+  }
+  
+}
 
 export function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));

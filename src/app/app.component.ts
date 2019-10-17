@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as Tone from 'tone';
-import { delay, midScaleFinder } from './functions/basics';
+import { delay, midScaleFinder, playSound } from './functions/basics';
 import { scaleMidError, scaleNotEight } from './functions/errors'
 
 
@@ -89,14 +89,9 @@ export class AppComponent {
       }
     }
     for(let i = 0; i< chordArray.length; i++){
-      this.playSound(chordArray[i]);
+      playSound(chordArray[i], this.range);
     }
-
   }
-  playSound(sound) {
-    this.synth.triggerAttackRelease(sound + this.range, '8n');
-  }
-
   async playScale() {
     let middleOfScale: number;
     //Catch if scale is greater than 8
