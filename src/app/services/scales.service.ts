@@ -29,7 +29,7 @@ export class ScalesService {
   }
 
   getCurrentScaleStream() : Observable<ScalesBasic[]> {
-    return this.subject;
+    return this.subject.asObservable();
   }
 
   getCurrentScales() {

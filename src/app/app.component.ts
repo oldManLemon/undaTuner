@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import * as Tone from 'tone';
 import { delay, midScaleFinder, playSound, playChord } from './functions/basics';
+=======
+import { delay, midScaleFinder } from './functions/basics';
+>>>>>>> 8d05186002b0a926e63c2a46f23ca337e84ddc95
 import { scaleMidError, scaleNotEight } from './functions/errors'
-
-
+import { AudioPlayerService } from './services/audio-player.service';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +24,15 @@ export class AppComponent {
   scaleTypeChoice: string;
   //basics: basicFunctions
 
+<<<<<<< HEAD
 
 
   constructor() {
     //create a synth and connect it to the master output (your speakers)
     //this.synth = new Tone.PolySynth().toMaster();
+=======
+  constructor(private player : AudioPlayerService) {
+>>>>>>> 8d05186002b0a926e63c2a46f23ca337e84ddc95
 
     this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']; //0 place and increase range!
     this.range = 4; //Default Value
@@ -64,12 +71,20 @@ export class AppComponent {
     if (index >= localMidC) {
       range++;
       console.log(`Playing: ${note}${range}`);
+<<<<<<< HEAD
       playSound(note, range, '8n');
+=======
+      this.player.triggerAttack(note + range, '8n');
+>>>>>>> 8d05186002b0a926e63c2a46f23ca337e84ddc95
 
 
     } else {
       console.log(`Playing: ${note}${range}`);
+<<<<<<< HEAD
       playSound(note, range, '8n');
+=======
+      this.player.triggerAttack(note + range, '8n');
+>>>>>>> 8d05186002b0a926e63c2a46f23ca337e84ddc95
 
     }
   }
@@ -92,6 +107,13 @@ export class AppComponent {
   
   
 
+<<<<<<< HEAD
+=======
+  }
+  playSound(sound) {
+    this.player.triggerAttack(sound + this.range, '8n');
+  }
+>>>>>>> 8d05186002b0a926e63c2a46f23ca337e84ddc95
 
   async playScale() {
     let middleOfScale: number;
@@ -106,12 +128,13 @@ export class AppComponent {
       if (note == middleOfScale) {
         range++;
       }
+<<<<<<< HEAD
       playSound(this.scale[note], range);
+=======
+      this.player.triggerAttack(this.scale[note] + range, '8n');
+>>>>>>> 8d05186002b0a926e63c2a46f23ca337e84ddc95
       console.log(this.scale[note] + range);
       await delay(500);
     }
   }
-
-
-
 }
