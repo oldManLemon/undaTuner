@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import * as Tone from 'tone';
 import { delay, midScaleFinder } from './functions/basics';
 import { scaleMidError, scaleNotEight } from './functions/errors'
-
-
+import { AudioPlayerService } from './services/audio-player.service';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +19,7 @@ export class AppComponent {
   scaleTypeChoice: string;
   //basics: basicFunctions
 
-
-
-  constructor() {
-    //create a synth and connect it to the master output (your speakers)
-    this.synth = new Tone.PolySynth().toMaster();
+  constructor(private player : AudioPlayerService) {
 
     this.scale = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']; //0 place and increase range!
     this.range = 4; //Default Value
@@ -68,12 +62,12 @@ export class AppComponent {
     if (index >= localMidC) {
       range++;
       console.log(`Playing: ${note}${range}`);
-      this.synth.triggerAttackRelease(note + range, '8n');
+      this.player.triggerAttack(note + range, '8n');
 
 
     } else {
       console.log(`Playing: ${note}${range}`);
-      this.synth.triggerAttackRelease(note + range, '8n');
+      this.player.triggerAttack(note + range, '8n');
 
     }
   }
@@ -94,7 +88,7 @@ export class AppComponent {
 
   }
   playSound(sound) {
-    this.synth.triggerAttackRelease(sound + this.range, '8n');
+    this.player.triggerAttack(sound + this.range, '8n');
   }
 
   async playScale() {
@@ -110,12 +104,9 @@ export class AppComponent {
       if (note == middleOfScale) {
         range++;
       }
-      this.synth.triggerAttackRelease(this.scale[note] + range, '8n');
+      this.player.triggerAttack(this.scale[note] + range, '8n');
       console.log(this.scale[note] + range);
       await delay(500);
     }
   }
-
-
-
 }
