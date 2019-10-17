@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as Tone from 'tone';
-import { delay, midScaleFinder, playSound } from './functions/basics';
+import { delay, midScaleFinder, playSound, playChord } from './functions/basics';
 import { scaleMidError, scaleNotEight } from './functions/errors'
 
 
@@ -33,6 +33,7 @@ export class AppComponent {
     //this.scaleTypeChoice = 'basic';
 
   }
+  
 
   selectScale(scale: string[]) {
     this.scale = scale;
@@ -40,9 +41,9 @@ export class AppComponent {
   }
 
   typeOfScale(scaleTypeName: string) {
-    ///console.log(scaleTypeName);
+
     this.scaleTypeChoice = scaleTypeName;
-    //console.log(this.scaleTypeChoice);
+
   }
 
   rangeSelector(range: number) {
@@ -51,19 +52,14 @@ export class AppComponent {
 
 
   playNote(pair: [string, number, number?]) {
-
     var note = pair[0];
     var index = pair[1];
     var localMidC = pair[2];
     let range = this.range;
-
     //Catch the scale error: Error reports in console and disables buttons
     if (scaleMidError(localMidC)) {
       return console.error(`An error has occured please chose another scale!`)
     }
-
-
-
     //sort out if range should be plus one or not
     if (index >= localMidC) {
       range++;
@@ -73,25 +69,30 @@ export class AppComponent {
 
     } else {
       console.log(`Playing: ${note}${range}`);
-      playSound(note,range, '8n');
+      playSound(note, range, '8n');
 
     }
   }
-  playChord() {
-    let chordArray = []
-    let scaleOfDoom = this.scale;
-    let lengthOfScale = this.scale.length;
-    console.log(this.scale)
-    for (let note = 0; note < lengthOfScale; note++) {
-      if (note == 0 || note == 2 ||note == 4) {
-        console.log(scaleOfDoom[note])
-        chordArray.push(scaleOfDoom[note]);
-      }
-    }
-    for(let i = 0; i< chordArray.length; i++){
-      playSound(chordArray[i], this.range);
-    }
-  }
+  //Refactor this out to a range of chord structures
+  // playChord() {
+  //   let chordArray = []
+  //   let scaleOfDoom = this.scale;
+  //   let lengthOfScale = this.scale.length;
+  //   console.log(this.scale)
+  //   for (let note = 0; note < lengthOfScale; note++) {
+  //     if (note == 0 || note == 2 || note == 4) {
+  //       console.log(scaleOfDoom[note])
+  //       chordArray.push(scaleOfDoom[note]);
+  //     }
+  //   }
+  //   for (let i = 0; i < chordArray.length; i++) {
+  //     playSound(chordArray[i], this.range);
+  //   }
+  // }
+  
+  
+
+
   async playScale() {
     let middleOfScale: number;
     //Catch if scale is greater than 8
@@ -105,7 +106,7 @@ export class AppComponent {
       if (note == middleOfScale) {
         range++;
       }
-      playSound(this.scale[note],range);
+      playSound(this.scale[note], range);
       console.log(this.scale[note] + range);
       await delay(500);
     }

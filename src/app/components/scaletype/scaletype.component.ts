@@ -29,7 +29,7 @@ export class ScaletypeComponent implements OnInit {
 
     this.typeSelected.emit(data)
 
-    console.log("onSelect", data);
+    //console.log("onSelect", data);
 
     this.types.changeScaleTypeState(data);
   }

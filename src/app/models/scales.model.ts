@@ -15,3 +15,8 @@ export class ScaleTypes{
     id:string;
     name: string;
 }
+export class ChordTypes{
+    id:string;
+    name:string;
+    keys: number[]
+}

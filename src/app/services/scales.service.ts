@@ -43,6 +43,17 @@ export class ScalesService {
     }
   }
 
+  
+  getChords(){
+    return[
+      {id:'root',name:'', keys:[0,2,4]},
+      {id:'7th',name:'7', keys:[0,2,4,6]},
+      //{id:'root',name:'', keys:[0,2,4]},
+  
+    ]
+    
+  }
+
   getScaleTypes() {
     return [
       { id: 'basics', name: 'Basic Scales' },
@@ -70,6 +81,7 @@ export class ScalesService {
 
     ]
   }
+  
 
   getBasicBluesScales() {
     return [
@@ -91,4 +103,6 @@ export class ScalesService {
 
     ] //Difficulty here is there is sometimes not a middle C so will need to guess where that is. 
   }
+
+
 }
