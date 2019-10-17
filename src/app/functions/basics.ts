@@ -17,15 +17,21 @@ export function playChord(typeOfChord: string, scale: string[], range: number, p
   let chordArray = []
   let strangeArray = playableNotes[0]; //Keeps acting as an object
   let arrayLength = playableNotes[0].length;
-  
+  let mid = midScaleFinder(scale);
   for (let i = 0; i < arrayLength; i++) {
     let x = strangeArray[i]
-    
-    chordArray.push(scale[x])
+    if (mid < x) {
+     // console.log(scale[x + (range + 1)])
+      chordArray.push(scale[x] + [range + 1]);
+    } else {
+     // console.log(scale[x + range])
+      chordArray.push(scale[x] + [range])
+    }
+
   }
   console.info(`The Chord you play contains these notes ${chordArray}`)
   for (let i = 0; i < chordArray.length; i++) {
-    playSound(chordArray[i], range);
+    playSound(chordArray[i], chordArray[i][0]);
   }
 
 }

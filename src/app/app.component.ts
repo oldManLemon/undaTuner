@@ -67,25 +67,6 @@ export class AppComponent {
 
     }
   }
-  //Refactor this out to a range of chord structures
-  // playChord() {
-  //   let chordArray = []
-  //   let scaleOfDoom = this.scale;
-  //   let lengthOfScale = this.scale.length;
-  //   console.log(this.scale)
-  //   for (let note = 0; note < lengthOfScale; note++) {
-  //     if (note == 0 || note == 2 || note == 4) {
-  //       console.log(scaleOfDoom[note])
-  //       chordArray.push(scaleOfDoom[note]);
-  //     }
-  //   }
-  //   for (let i = 0; i < chordArray.length; i++) {
-  //     playSound(chordArray[i], this.range);
-  //   }
-  // }
-  
-  
-
 
   async playScale() {
     let middleOfScale: number;
