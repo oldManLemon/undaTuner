@@ -1,1 +1,1 @@
-<button class='button is-primary' *ngFor="let chord of chordsAvailable" (click)=chordClick([chord.id],[chord.keys])>{{scale[0]}}{{chord.name}}</button>
+<button class='button is-primary' *ngFor="let chord of chordsAvailable; let i = index" (click)=chordClick([chord.id],[chord.keys])>{{scale[i]}}{{chord.name}}</button>

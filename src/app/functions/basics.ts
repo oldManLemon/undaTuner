@@ -20,7 +20,7 @@ export function playChord(typeOfChord: string, scale: string[], range: number, p
   let mid = midScaleFinder(scale);
   for (let i = 0; i < arrayLength; i++) {
     let x = strangeArray[i]
-    if (mid < x) {
+    if (mid <= x) {
      // console.log(scale[x + (range + 1)])
       chordArray.push(scale[x] + [range + 1]);
     } else {

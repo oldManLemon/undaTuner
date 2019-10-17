@@ -45,9 +45,14 @@ export class ScalesService {
 
   
   getChords(){
-    return[
-      {id:'root',name:'', keys:[0,2,4]},
-      {id:'7th',name:'7', keys:[0,2,4,6]},
+    return[ 
+      //{id:'7th',name:'7', keys:[0,2,4,6]},
+      {id:'root',name:'Major', keys:[0,2,4]},
+      {id:'iiMin',name:'Minor', keys:[1,3,5]},
+      {id:'iiiMin',name:'Minor', keys:[2,4,6]},
+      {id:'IVMajor',name:'Major', keys:[3,5,7]},
+      //{id:'root',name:'Minor', keys:[0,2,4]},
+     
       //{id:'root',name:'', keys:[0,2,4]},
   
     ]
