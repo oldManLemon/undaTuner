@@ -10,6 +10,7 @@ export function scaleMidError(code: number) {
   //If scale is larger than 8
   export function scaleNotEight(scale: Array<string>) {
     let length = scale.length;
+    console.log(length)
   
     if (length > 8) {
       console.info('Scale is longer than 8 notes')

@@ -1,4 +1,5 @@
 import * as Tone from 'tone';
+import { ScalesService } from '../services/scales.service';
 let synth: any;
 
 synth = new Tone.PolySynth().toMaster();
@@ -12,23 +13,42 @@ export function playSound(sound: string, range: number, length?: string) {
 
 }
 
+function scaleExtender(scale: Array<string>){
+  //Double the length of the scale
+ let longScale: string[];
+ longScale = scale;
+ //console.log(`Pre lengthening Scale ${longScale}`)
+  let lengthOfScale = scale.length;
+  for(let i=0; i < lengthOfScale; i++){
+    longScale.push(scale[i]);
+  }
+  //console.log(`Pre lengthening Scale ${longScale}`)
+ return longScale;
+}
+
 
 export function playChord(typeOfChord: string, scale: string[], range: number, playableNotes: any, length?: string) {
   let chordArray = []
   let strangeArray = playableNotes[0]; //Keeps acting as an object
   let arrayLength = playableNotes[0].length;
+ 
+  if(scale.length < 8){
+  
+    scale = scaleExtender(scale);
+  }
   let mid = midScaleFinder(scale);
   for (let i = 0; i < arrayLength; i++) {
     let x = strangeArray[i]
     if (mid <= x) {
-     // console.log(scale[x + (range + 1)])
+     
       chordArray.push(scale[x] + [range + 1]);
     } else {
-     // console.log(scale[x + range])
+     
       chordArray.push(scale[x] + [range])
     }
 
   }
+  
   console.info(`The Chord you play contains these notes ${chordArray}`)
   for (let i = 0; i < chordArray.length; i++) {
     playSound(chordArray[i], chordArray[i][0]);
