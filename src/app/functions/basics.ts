@@ -12,18 +12,23 @@ export function playSound(sound: string, range: number, length?: string) {
   }
 
 }
-
-function scaleExtender(scale: Array<string>){
+export function trimScale(scale:Array<string>) {
+  //probably doesn't need an application
+ scale =  scale.slice(0,7);
+  //console.log(scale);
+  return scale
+}
+function scaleExtender(scale: Array<string>) {
   //Double the length of the scale
- let longScale: string[];
- longScale = scale;
- //console.log(`Pre lengthening Scale ${longScale}`)
+  //Maybe make into recurring function
+  let longScale: string[];
+  longScale = scale;
   let lengthOfScale = scale.length;
-  for(let i=0; i < lengthOfScale; i++){
+  for (let i = 1; i < lengthOfScale; i++) {
+    //i is one to skip the first of the scale to avoid duplication ie ABCCDEF
     longScale.push(scale[i]);
   }
-  //console.log(`Pre lengthening Scale ${longScale}`)
- return longScale;
+  return longScale;
 }
 
 
@@ -31,29 +36,33 @@ export function playChord(typeOfChord: string, scale: string[], range: number, p
   let chordArray = []
   let strangeArray = playableNotes[0]; //Keeps acting as an object
   let arrayLength = playableNotes[0].length;
- 
-  if(scale.length < 8){
-  
+  let scaleExtenderUsed = false;
+let mid = midScaleFinder(scale);
+  if (scale.length < 8) {
+    
     scale = scaleExtender(scale);
+    scaleExtenderUsed = true;
   }
-  let mid = midScaleFinder(scale);
+  
   for (let i = 0; i < arrayLength; i++) {
     let x = strangeArray[i]
     if (mid <= x) {
-     
+
       chordArray.push(scale[x] + [range + 1]);
     } else {
-     
+
       chordArray.push(scale[x] + [range])
     }
 
   }
-  
+
   console.info(`The Chord you play contains these notes ${chordArray}`)
   for (let i = 0; i < chordArray.length; i++) {
     playSound(chordArray[i], chordArray[i][0]);
   }
-
+  
+  
+  
 }
 
 

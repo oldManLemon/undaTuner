@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { delay, midScaleFinder, playSound } from './functions/basics';
+import { delay, midScaleFinder, playSound, trimScale } from './functions/basics';
 import { scaleMidError, scaleNotEight } from './functions/errors'
 import { AudioPlayerService } from './services/audio-player.service';
 
@@ -72,7 +72,8 @@ export class AppComponent {
     let middleOfScale: number;
     //Catch if scale is greater than 8
     if (scaleNotEight(this.scale) == 800) { // see error codes
-      return console.error('Basic Scales can not be more than 8 notes in length');
+      this.scale = trimScale(this.scale); //super hacky solution need to fix.
+     // return console.error('Basic Scales can not be more than 8 notes in length');
     }
     middleOfScale = midScaleFinder(this.scale);
     let lengthOfScale = this.scale.length;
